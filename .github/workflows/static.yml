@@ -15,16 +15,11 @@ jobs:
         node-version: 18
     - run: npm ci
     
-    - name: Remove File
-      uses: JesseTG/rm@v1.0.3
-      with:
-        path: ./.gitignore
+    - run: rm -rf ./.git
 
-    - name: Push
-      uses: s0/git-publish-subdir-action@develop
-      env:
-        REPO: self
-        BRANCH: gh-pages # The branch name where you want to push the assets
-        FOLDER: . # The directory where your assets are generated
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
-        MESSAGE: "Build: ({sha}) {msg}" # The commit message
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: '.'
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
