@@ -14,6 +14,11 @@ jobs:
       with:
         node-version: 18
     - run: npm ci
+    
+    - name: Remove File
+      uses: JesseTG/rm@v1.0.3
+      with:
+        path: ./.gitignore
 
     - name: Push
       uses: s0/git-publish-subdir-action@develop
