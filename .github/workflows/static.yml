@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '19'
-    - run: npm ci
+    - run: npm install
 
     - name: Push
       uses: s0/git-publish-subdir-action@develop
